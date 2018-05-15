@@ -1,7 +1,6 @@
 # Site settings
 title:          Bilal Haidar
 description:    "Web Development & Research"
-baseurl:        "/"
 url:            "https://bhaidar.github.io"
 
 # Author
