@@ -20,6 +20,7 @@ sass:
 # Gems
 plugins:
   - jekyll-paginate
+  - jekyll-remote-theme
 
 # Permalinks
 permalink:      /:year-:month-:day/:title
