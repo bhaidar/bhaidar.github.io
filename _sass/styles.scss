@@ -34,3 +34,11 @@
 		fill: #0077B5;
 	}
 }
+
+span.main-title{
+	color: $default-tint;
+    font-family: $serif-secondary;
+    letter-spacing: 0.5px;
+    text-align: justify;
+	font-style: italic;
+ }
