@@ -23,7 +23,7 @@ plugins:
   - jekyll-remote-theme
 
 # Permalinks
-permalink:      /:year-:month-:day/:title
+permalink:      /:year/:month/:title
 paginate:       5
 
 # Social Icons
