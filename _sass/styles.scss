@@ -1,0 +1,30 @@
+/* Share buttons */
+.sharebuttons {
+	margin: 0 auto 0 auto;
+
+	ul {
+		margin: 20px 0 0 0;
+		text-align: center;
+	
+		li {
+			display: inline;
+	
+			a {
+				text-decoration: none;
+			}
+
+			svg {
+				width: 40px;
+				height: 40px;
+			}
+		}
+	}
+	
+	.twitter svg {
+		fill: #1DA1F2;
+	}
+
+	.linkedin svg {
+		fill: #0077B5;
+	}
+}
