@@ -1,6 +1,6 @@
 /* Share buttons */
 .sharebuttons {
-	margin: 0 auto 0 auto;
+	margin: 30px auto 0 auto;
 
 	ul {
 		margin: 20px 0 0 0;
@@ -8,8 +8,14 @@
 	
 		li {
 			display: inline;
+			text-align: center;
+			margin-right: 10px;
 	
 			a {
+				text-decoration: none;
+			}
+			
+			a:hover {
 				text-decoration: none;
 			}
 
