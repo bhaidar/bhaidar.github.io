@@ -25,3 +25,11 @@ plugins:
 # Permalinks
 permalink:      /:year-:month-:day/:title
 paginate:       5
+
+# Social Icons
+twitter_username:     bhaidar
+github_username:      bhaidar
+linkedin_username:    
+google_plus_username: 
+facebook_username:    
+dribbble_username:
