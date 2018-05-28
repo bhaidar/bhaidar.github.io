@@ -5,9 +5,9 @@ url:            "https://bhaidar.github.io"
 
 # Author
 author:
-  name:         Chester How
-  url:          https://chester.how
-  email:        chesterhow@gmail.com
+  name:         Bilal Haidar
+  url:          https://www.bilalhaidar.com
+  email:        bhaidar@gmail.com
 
 # Build settings
 markdown:       kramdown
