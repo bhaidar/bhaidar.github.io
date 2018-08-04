@@ -20,7 +20,7 @@ In addition, have a look at this article [Angular 2 Component Reuse Strategy](ht
 
 The scenario at hand involves a main component, *ComponentA*, that embeds another child component, *ComponentB*, and two routes that point to *ComponentA*. This means, the two routes will load the same component. The figure below shows how they are all involved in the process.
 
-![Figure 1: Scenario](./../assets/use-the-change-detection-cycle-to-manipulate-dom-when-multiple-routes-point-to-the-same-component/scenario-resources.png)
+![Figure 1: Scenario](./../../assets/use-the-change-detection-cycle-to-manipulate-dom-when-multiple-routes-point-to-the-same-component/scenario-resources.png)
 *Figure 1: Scenario*
 
 In summary,
@@ -42,19 +42,19 @@ Run the application and **click** on *Blogs*. *ComponentA* loads, retrieves the 
 
 > I'm implementing a fake backend provider to simulate calling a REST API, hosted somewhere in the cloud, to retrieve some data. You may check the code for more details.
 
-![Figure 2: First load of ComponentA with Blgos](./../assets/use-the-change-detection-cycle-to-manipulate-dom-when-multiple-routes-point-to-the-same-component/first-run.png)
+![Figure 2: First load of ComponentA with Blgos](~/assets/use-the-change-detection-cycle-to-manipulate-dom-when-multiple-routes-point-to-the-same-component/first-run.png)
 *Figure 2: First load of ComponentA with Blogs*
 
 Now, **click** on *Employees* to load the employees data. 
 
 By design, Angular **reuses** the same instances of *ComponentA* and its children components when routing to *ComponentA* multiple times. You clearly see how the problematic behavior is popping up. Figures 3 and 4 illustrates that.
 
-![Figure 3: Second load of ComponentA with Employees](./../assets/use-the-change-detection-cycle-to-manipulate-dom-when-multiple-routes-point-to-the-same-component/second-run.png)
+![Figure 3: Second load of ComponentA with Employees](./../../assets/use-the-change-detection-cycle-to-manipulate-dom-when-multiple-routes-point-to-the-same-component/second-run.png)
 *Figure 3: Second load of ComponentA with Employees*
 
 Even though you've clicked on a new *Route*, *ComponentA* is still showing the old data!
 
-![Figure 4: Data Arrives](./../assets/use-the-change-detection-cycle-to-manipulate-dom-when-multiple-routes-point-to-the-same-component/data-arrives.png)
+![Figure 4: Data Arrives](./../../assets/use-the-change-detection-cycle-to-manipulate-dom-when-multiple-routes-point-to-the-same-component/data-arrives.png)
 *Figure 4: Data arrives from server*
 
 Upon receiving the new data from the server, *ComponentA* reflects them on *ComponentB* and hence on DOM.
@@ -119,7 +119,7 @@ We can easily relate the above to the problematic behavior in hand. What is real
 
 We want to reset the UI, while waiting for the new data to arrive from the server, upon clicking the second route. This means, we want to reset the local variables in *ComponentA*, instantly when the second route is clicked, so that Angular can detect a change in the input parameters of *ComponentB* and hence renders nothing on the DOM instead of the old data. 
 
-To do so, we will hook into **Router** events collection and locate the **NavigationStart** event. When you click a route, Angular triggers some events to give a progress indication on the navigation cycle. One of those events is the *NavigationStart* event that is triggered at the beginning of the navigtation.
+To do so, we will hook into **Router** events collection and locate the **NavigationStart** event. When you click a route, Angular triggers some events to give a progress indication on the navigation cycle. One of those events is the *NavigationStart* event that is triggered at the beginning of the navigation.
 
 ````Typescript
 this.routerSubscription = this.router.events.subscribe(route => {
@@ -145,7 +145,7 @@ By the time the change detection cycle starts, Angular detects a change in the i
 
 When the new data arrives, Angular triggers another change detection cycle, updates the input parameters of *ComponentB* with the new data received and finally renders them to the DOM.
 
-![UI Reset When navigating to new Route](./../assets/use-the-change-detection-cycle-to-manipulate-dom-when-multiple-routes-point-to-the-same-component/solution.png)
+![UI Reset When navigating to new Route](./../../assets/use-the-change-detection-cycle-to-manipulate-dom-when-multiple-routes-point-to-the-same-component/solution.png)
 
 ## Summary
 
