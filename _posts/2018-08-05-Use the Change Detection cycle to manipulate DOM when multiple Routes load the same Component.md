@@ -42,7 +42,7 @@ Run the application and **click** on *Blogs*. *ComponentA* loads, retrieves the 
 
 > I'm implementing a fake backend provider to simulate calling a REST API, hosted somewhere in the cloud, to retrieve some data. You may check the code for more details.
 
-![Figure 2: First load of ComponentA with Blogs](./../../assets/2018-08-05-p1t/first-run.PNG)
+![Figure 2: First load of ComponentA with Blogs](./../../assets/2018-08-05-p1/first-run.PNG)
 *Figure 2: First load of ComponentA with Blogs*
 
 Now, **click** on *Employees* to load the employees data. 
@@ -54,7 +54,7 @@ By design, Angular **reuses** the same instances of *ComponentA* and its childre
 
 Even though you've clicked on a new *Route*, *ComponentA* is still showing the old data!
 
-![Figure 4: Data Arrives](./../../assets2018-08-05-p1/data-arrives.PNG)
+![Figure 4: Data Arrives](./../../assets/2018-08-05-p1/data-arrives.PNG)
 *Figure 4: Data arrives from server*
 
 Upon receiving the new data from the server, *ComponentA* reflects them on *ComponentB* and hence on DOM.
