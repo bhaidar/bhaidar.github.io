@@ -10,7 +10,7 @@ author:
   name:         Bilal Haidar
   url:          https://www.bilalhaidar.com
   email:        bhaidar@gmail.com
-  twitter:      "bhaidar"
+  twitter:      "bhaidar" #twitter:creator
 
 # Build settings
 markdown:       kramdown
@@ -40,7 +40,7 @@ dribbble_username:
 
 # SEO
 twitter:
-  username: bhaidar
+  username: Bilal Haidar
   card: summary
 
 # SEO Defaults
