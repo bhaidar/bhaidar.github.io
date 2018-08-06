@@ -47,4 +47,4 @@ defaults:
       path:         ""
     values:
       image:
-        path:       "/favicon.ico"
+        path:       "/assets/apple-touch-icon-ipad-retina-152x152.png"
