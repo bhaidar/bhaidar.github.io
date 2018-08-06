@@ -2,6 +2,7 @@
 title:          Bilal Haidar
 description:    "It's all about coding"
 url:            "https://www.bilalhaidar.com"
+logo:           "/favicon.ico"
 
 # Author
 author:
@@ -21,6 +22,7 @@ sass:
 plugins:
   - jekyll-paginate
   - jekyll-remote-theme
+  - jekyll-seo-tag
 
 # Permalinks
 permalink:      /:year/:month/:title
@@ -33,3 +35,10 @@ linkedin_username:
 google_plus_username: 
 facebook_username:    
 dribbble_username:
+
+# SEO
+twitter:
+  username: bhaidar
+  card: summary
+
+# Social
