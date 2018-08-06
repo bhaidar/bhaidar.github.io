@@ -1,5 +1,6 @@
 # Site settings
 title:          Bilal Haidar
+email:          bhaidar@gmail.com
 description:    "It's all about coding"
 url:            "https://www.bilalhaidar.com"
 logo:           "/favicon.ico"
@@ -9,7 +10,7 @@ author:
   name:         Bilal Haidar
   url:          https://www.bilalhaidar.com
   email:        bhaidar@gmail.com
-  twitter:      "Bilal Haidar"
+  twitter:      "bhaidar"
 
 # Build settings
 markdown:       kramdown
