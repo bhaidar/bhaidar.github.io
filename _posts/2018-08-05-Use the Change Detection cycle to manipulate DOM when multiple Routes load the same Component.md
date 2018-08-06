@@ -1,4 +1,9 @@
-﻿In your Angular application, you have the scenario of 2 **Routes** that load the same component **ComponentA**. *ComponentA* is configured to use **ChangeDetectionStrategy.OnPush**. It checks the route data, calls a REST API to retrieve data from the server and then binds the data to a Grid or table.
+﻿---
+image:
+  path: "/assets/2018-08-05-p1/scenario-resources.PNG"
+---
+
+In your Angular application, you have the scenario of 2 **Routes** that load the same component **ComponentA**. *ComponentA* is configured to use **ChangeDetectionStrategy.OnPush**. It checks the route data, calls a REST API to retrieve data from the server and then binds the data to a Grid or table.
 
 - You notice that when visiting the first route, everything works just fine. The data is loaded from the server and the DOM displays the data properly.
 
