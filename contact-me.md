@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title: "Contact Me"
 author: "Bilal Haidar"
 permalink: /contact-me/
