@@ -14,7 +14,7 @@ With 15 years of Development expertise, my role is to help establish teams build
 
 - For the frontend, I make use of Angular (by Google), vanilla JavaScript, HTML and CSS.
 
-In addition, I am an established technical writer to software documentation, training material and courses. I have well over 60 online articles published with an array of highly regarded magazines and websites.
+In addition, I am an established technical writer of software documentation, training material and courses. I have well over 60 online articles published with an array of highly regarded magazines and websites.
 
 You can find me heading online forums, taking questions, discussing technical code and referring solutions to those who need it. In recent years, I have become a highly sought after consultant on major projects all over the world. 
 
