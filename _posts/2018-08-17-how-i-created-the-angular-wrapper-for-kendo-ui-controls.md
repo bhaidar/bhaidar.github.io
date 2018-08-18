@@ -203,7 +203,7 @@ To create a new component inside the library:
  
     > There are plenty of options to configure the `ng generate component` with. You can read more about them here: [ng generate component]( https://github.com/angular/angular-cli/wiki/generate-component).
 
-1. First of all, let’s us export the new component to both, the library module class and the `public_apis.ts` file respectively.
+1. First of all, let’s export the new component to both, the library module class and the `public_apis.ts` file respectively.
 
     ```` 
     @NgModule({
@@ -221,7 +221,7 @@ To create a new component inside the library:
     export * from './lib/tree-list.component';
     ````
 
-    Now that we are sure the new component is available to the outside, let us focus on building the component functionality.
+    Now that we are sure the new component is available to the outside, let us focus on building the component's functionality.
  
 1. Locate the `package.json` file inside the library and add the following packages:
  
@@ -244,18 +244,18 @@ To create a new component inside the library:
 
     The code uses a range of version numbers for the dependency packages so that the library is not limited to a specific package version.
  
-1. Add the same packages as above under the **devDependencies** section. You add the same packages as above with the addition of some Typescript packages for the Kendo UI and jQuery packages so that you benefit from a free intellisense while coding!
+2. Add the same packages under the **devDependencies** section. You add the same packages fwith the addition of some Typescript packages for the Kendo UI and jQuery packages so that you benefit from a free intellisense while coding!
  
-1. Run the following commands to install the required dependencies:
+3. Run the following commands to install the required dependencies:
   
     ````
     cd projects/angular-wrapper-kendo-ui
     npm install
     ````
 
-    The command aboveinstalls all the required dependencies into a local *node_modules* folder inside the library projects.
+    The command above installs all the required dependencies into a local *node_modules* folder inside the library projects.
  
-1. Go back to the main application and add the same packages as above to the `package.json` file at the root of the applicztion. Make sure to add the packages under the **dependencies** section.
+4. Go back to the main application and add the same packages as above to the `package.json` file at the root of the application. Make sure to add the packages under the **dependencies** section.
 
     ````
     "@progress/kendo-ui": "^2018.2.806",
@@ -319,7 +319,7 @@ To create a new component inside the library:
     public options: kendo.ui.TreeListOptions;
     ````
 
-    The component expects an input parameter named **options** of type *kendo.ui.TreeListOptions*. To keep things simple, the code is using theinterfaces already defined by Kendo UI library. This way, you maintain the same developer experience when using the Kendo UI controls inside an Angular app. 
+    The component expects an input parameter named **options** of type *kendo.ui.TreeListOptions*. To keep things simple, the code is using the interfaces already defined by Kendo UI library. This way, you maintain the same developer experience when using the Kendo UI controls inside an Angular app. 
  
 1. Add a reference to the HTML div element marked previously with a template reference variable of `treelist`:
 
@@ -350,7 +350,7 @@ To create a new component inside the library:
  
     > Angular initiates a new change detection cycle with every event triggered in the application. For instance, moving the mouse over the TreeList control, that would cause Angular to run a new change detection cycle. Do you really need Angular to run that much of change detection cycles often? Of course not! That’s why, in order for Angular not to run change detection cycles frequently, you **must** initialize the TreeList control outside the boundary context of Angular. This ensures the best performance when using not only the Kendo UI TreeList control, but also any jQuery plugin you want to wrap inside an Angular component.
 
-1. It is recommended to destroy the whole HTML div that is hosting the TreeList control when Angular runs the Destroy event on the TreeListComponent:
+1. It is recommended you destroy the whole HTML div that is hosting the TreeList control when Angular runs the Destroy event on the TreeListComponent:
  
     ````
     ngOnDestroy(): void {
@@ -393,9 +393,9 @@ To create a new component inside the library:
       ],
     ````
 
-    The imports the module from the library using the library name surrounded by single quotes. Then it adds the module into the list of **imports** of the main app module. With this configuration, you have now access to the TreeListComponent anywhere in the main app.
+    You import the module from the library using the library name surrounded by single quotes. Then it adds the module into the list of **imports** of the main app module. With this configuration, you have now access to the TreeListComponent anywhere in the main app.
  
-1. Open the `app.component.html` file and include the component as follows:
+2. Open the `app.component.html` file and include the component as follows:
 
     ````
     <ng-treelist [options]="options"></ng-treelist>
@@ -407,7 +407,7 @@ To create a new component inside the library:
     private options: any;
     ````
  
-1. In the **ngOnInit** Angular life-cycle hook, the code creates the actual content of the `options` object.
+3. In the **ngOnInit** Angular life-cycle hook, the code creates the actual content of the `options` object.
  
     ````
     this.options = {
@@ -437,26 +437,26 @@ To create a new component inside the library:
     };
     ````
 
-    If you are familiar with using Kendo UI controls, you will notice there's nothnig new here! This is similar to the way you initialize and use Kendo UI controls outside Angular. Teaching you how to use Kendo UI controls is outside the scope of this article. You may learn more about the Telerik Kendo UI TreeList jQuery Control by following this link: [TreeList Widget]( https://demos.telerik.com/kendo-ui/treelist/index).
+    If you are familiar with using Kendo UI controls, you will notice there's nothing new here! This is similar to the way you initialize and use Kendo UI controls outside Angular. Teaching you how to use Kendo UI controls is outside the scope of this article. You may learn more about the Telerik Kendo UI TreeList jQuery Control by following this link: [TreeList Widget]( https://demos.telerik.com/kendo-ui/treelist/index).
  
     The code above triggers the **change** event of the TreeList control under the context of a a **zone.run()** block. This block functions in the opposite direction to the **zone.runOutsideAngular()** block.
  
-    When the user selects a row on the TreeList control, you want Angular to be aware of this change of selection event. Inside the **change** event handle, you can access any locally defined variable, update its value and manipulate it the way you want. Because of that, you want Angular to run a change detection cycle so as to catch all the changes performed inside the **change** event handler and to render updated values to the DOM accordingly.
+    When the user selects a row on the TreeList control, you want Angular to be aware of this change of selection event. Inside the **change** event handle, you can access any locally defined variable, update its value and manipulate it the way you want. Because of that, you want Angular to run a change detection cycle to catch all the changes performed inside the **change** event handler and to render updated values to the DOM accordingly.
 
-1. Finally you run the application by issuing the `ng serve` command at the root of the application.
+4. Finally you run the application by issuing the `ng serve` command at the root of the application.
 
     ![TreeList Control in Angular](/assets/2018-08-17-p1/treelist-running-in-angular.png)
  
     The Kendo UI TreeList jQuery control functions as expected inside an Angular Component.
  
-    Remember, any time you do a change on the library files, you have to build the library again before running the main application. For that reason, you can add a helper NPM script into the `package.json` file at the root folder of the application as follows:
+    Remember, any change on the library files, you have to build the library again before running the main application. For that reason, you can add a helper NPM script into the `package.json` file at the root folder of the application as follows:
  
     ````
     "start": "npm run build-lib && ng serve",
     "build-lib": "ng build --prod angular-wrapper-kendo-ui",
     ````
 
-    The script above ensures that the library is built before running and serving the application.
+    The code ensures that the library is built before running and serving the application.
 
 >
 You can download the entire library source code from GitHub by following this link: [Angular Wrapper Kendo UI App]( https://github.com/bhaidar/angular-wrapper-kendo-ui-app).
