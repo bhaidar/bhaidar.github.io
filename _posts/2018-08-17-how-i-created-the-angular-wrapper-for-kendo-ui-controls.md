@@ -291,7 +291,7 @@ To create a new component inside the library:
     In the **tree-list.component.html** file include the following HTML:
     
     ````
-    <div #treelist></div>`
+    <div #treelist></div>
     ````
 
     The HTML markup adds a *div* element and uses a [Template Reference Variable]( https://angular.io/guide/template-syntax#ref-vars) to mark the div element with a name.
