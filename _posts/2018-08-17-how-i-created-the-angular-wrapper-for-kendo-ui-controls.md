@@ -244,7 +244,7 @@ To create a new component inside the library:
 
     The code uses a range of version numbers for the dependency packages so that the library is not limited to a specific package version.
  
-2. Add the same packages under the **devDependencies** section. You add the same packages fwith the addition of some Typescript packages for the Kendo UI and jQuery packages so that you benefit from a free intellisense while coding!
+2. Add the same packages under the **devDependencies** section. You add the same packages with the addition of some Typescript packages for the Kendo UI and jQuery packages so that you benefit from a free intellisense while coding!
  
 3. Run the following commands to install the required dependencies:
   
@@ -266,7 +266,7 @@ To create a new component inside the library:
 
 ## Build the TreeList Component
 
-1. Switch back to the library module file and import the the following two packages:
+1. Switch back to the library module file and import the following two packages:
  
     ````
     import { NgModule } from '@angular/core';
@@ -286,7 +286,7 @@ To create a new component inside the library:
 
     The two packages are imported, each on a single line. When building the library, *WebPack* takes note of those two import lines and loads the corresponding libraries into the client so that they are available to be used by the library at runtime. 
 
-1. Go back to the **TreeListComponent** and let us start building the component.
+2. Go back to the **TreeListComponent** and let us start building the component.
  
     In the **tree-list.component.html** file include the following HTML:
     
@@ -296,13 +296,13 @@ To create a new component inside the library:
 
     The HTML markup adds a *div* element and uses a [Template Reference Variable]( https://angular.io/guide/template-syntax#ref-vars) to mark the div element with a name.
 
-1. Back to the `tree-list.component.ts` file. Start by declaring a new variable for Kendo object to get full intellisense.
+3. Back to the `tree-list.component.ts` file. Start by declaring a new variable for Kendo object to get full intellisense.
 
     ````
     declare var kendo: any;`
     ````
 
-1. Define the Component *changeDetection* strategy to be: 
+4. Define the Component *changeDetection* strategy to be: 
 
     ````
     changeDetection: ChangeDetectionStrategy.OnPush`
@@ -310,9 +310,9 @@ To create a new component inside the library:
 
     This component defines a few input parameters. With the *changeDetection** set to *OnPush*, Angular would run a change detection cycle on this component only when the input parameters are changed. 
  
-1. Change the component selector to something like: `ng-treelist`.
+5. Change the component selector to something like: `ng-treelist`.
  
-1. Add an input parameter to define the options for the TreeList control. 
+6. Add an input parameter to define the options for the TreeList control. 
 
     ````
     @Input()
@@ -321,14 +321,14 @@ To create a new component inside the library:
 
     The component expects an input parameter named **options** of type *kendo.ui.TreeListOptions*. To keep things simple, the code is using the interfaces already defined by Kendo UI library. This way, you maintain the same developer experience when using the Kendo UI controls inside an Angular app. 
  
-1. Add a reference to the HTML div element marked previously with a template reference variable of `treelist`:
+7. Add a reference to the HTML div element marked previously with a template reference variable of `treelist`:
 
     ````
     @ViewChild('treelist')
     treelistEl: ElementRef;
     ````
 
-1. Once the component is loaded into DOM and *View* behind the component is up and ready, you can initialize the TreeList control inside the **ngAfterViewInit** Angular life-cycle hook:
+8. Once the component is loaded into DOM and *View* behind the component is up and ready, you can initialize the TreeList control inside the **ngAfterViewInit** Angular life-cycle hook:
  
     ````
     ngAfterViewInit() {
@@ -344,13 +344,13 @@ To create a new component inside the library:
 
     The code starts by getting a jQuery reference to the actual DOM element that will eventually hold the TreeList control in the DOM.
  
-    The code then initializes a new Kendo UI TreeList control using the typical jQuery method and supplying the *options* passed-in as input parameters to this component. Finally, the the code saves a reference to the **kendoTreeList** DOM for future use.
+    The code then initializes a new Kendo UI TreeList control using the typical jQuery method and supplying the *options* passed-in as input parameters to this component. Finally, the code saves a reference to the **kendoTreeList** DOM for future use.
  
     **The initialization of the TreeList control is done inside a zone.runOutsideAngular block.**
  
-    > Angular initiates a new change detection cycle with every event triggered in the application. For instance, moving the mouse over the TreeList control, that would cause Angular to run a new change detection cycle. Do you really need Angular to run that much of change detection cycles often? Of course not! That’s why, in order for Angular not to run change detection cycles frequently, you **must** initialize the TreeList control outside the boundary context of Angular. This ensures the best performance when using not only the Kendo UI TreeList control, but also any jQuery plugin you want to wrap inside an Angular component.
+    > Angular initiates a new change detection cycle with every event triggered in the application. For instance, moving the mouse over the TreeList control, that would cause Angular to run a new change detection cycle. Do you really need Angular to run a change detection cycle often? Of course not! That’s why, in order for Angular not to run change detection cycles frequently, you **must** initialize the TreeList control outside the boundary context of Angular. This ensures the best performance when using not only the Kendo UI TreeList control, but also any jQuery plugin you want to wrap inside an Angular component.
 
-1. It is recommended you destroy the whole HTML div that is hosting the TreeList control when Angular runs the Destroy event on the TreeListComponent:
+9. It is recommended you destroy the whole HTML div that is hosting the TreeList control when Angular runs the Destroy event on the TreeListComponent:
  
     ````
     ngOnDestroy(): void {
@@ -358,7 +358,7 @@ To create a new component inside the library:
     }
     ````
 
-1. Finally, you can expose any function on the TreList jQuery Control and make it public and visible to everyone. For instance, the code exposes a single function, the TreeList control `clearSelection` function:
+10. Finally, you can expose any function on the TreList jQuery Control and make it public and visible to everyone. For instance, the code exposes a single function, the TreeList control `clearSelection` function:
  
     ````
     public clearSelection(): void {
@@ -366,7 +366,7 @@ To create a new component inside the library:
     }
     ````
 
-1. Build the library by running the command: `ng build –prod angular-wrapper-kendo-ui`. This command builds the library and generates a build folder under the **dist** folder at the root of the application.
+11. Build the library by running the command: `ng build –prod angular-wrapper-kendo-ui`. This command builds the library and generates a build folder under the **dist** folder at the root of the application.
 
     >Angular-CLI already includes the required paths inside the root `tsconfig.json` file so that the application can realize and reference the TreeListComponent easily.
  
@@ -381,7 +381,7 @@ To create a new component inside the library:
      }
     ````
 
-1. Import the TreeListComponent to the main App. Switch back to the main app NgModule class and import the **AngularWrapperKendoUiModule**.
+12. Import the TreeListComponent to the main App. Switch back to the main app NgModule class and import the **AngularWrapperKendoUiModule**.
  
     ````
     import { AngularWrapperKendoUiModule } from 'angular-wrapper-kendo-ui';
@@ -393,9 +393,9 @@ To create a new component inside the library:
       ],
     ````
 
-    You import the module from the library using the library name surrounded by single quotes. Then it adds the module into the list of **imports** of the main app module. With this configuration, you have now access to the TreeListComponent anywhere in the main app.
+    You import the module from the library using the library name surrounded by single quotes. Then it adds the module into the list of **imports** of the main app module. With this configuration, you now have access to the TreeListComponent anywhere in the main app.
  
-2. Open the `app.component.html` file and include the component as follows:
+13. Open the `app.component.html` file and include the component as follows:
 
     ````
     <ng-treelist [options]="options"></ng-treelist>
@@ -407,7 +407,7 @@ To create a new component inside the library:
     private options: any;
     ````
  
-3. In the **ngOnInit** Angular life-cycle hook, the code creates the actual content of the `options` object.
+14. In the **ngOnInit** Angular life-cycle hook, the code creates the actual content of the `options` object.
  
     ````
     this.options = {
@@ -439,11 +439,11 @@ To create a new component inside the library:
 
     If you are familiar with using Kendo UI controls, you will notice there's nothing new here! This is similar to the way you initialize and use Kendo UI controls outside Angular. Teaching you how to use Kendo UI controls is outside the scope of this article. You may learn more about the Telerik Kendo UI TreeList jQuery Control by following this link: [TreeList Widget]( https://demos.telerik.com/kendo-ui/treelist/index).
  
-    The code above triggers the **change** event of the TreeList control under the context of a a **zone.run()** block. This block functions in the opposite direction to the **zone.runOutsideAngular()** block.
+    The code above triggers the **change** event of the TreeList control under the context of a **zone.run()** block. This block functions in the opposite direction to the **zone.runOutsideAngular()** block.
  
     When the user selects a row on the TreeList control, you want Angular to be aware of this change of selection event. Inside the **change** event handle, you can access any locally defined variable, update its value and manipulate it the way you want. Because of that, you want Angular to run a change detection cycle to catch all the changes performed inside the **change** event handler and to render updated values to the DOM accordingly.
 
-4. Finally you run the application by issuing the `ng serve` command at the root of the application.
+15. Finally you run the application by issuing the `ng serve` command at the root of the application.
 
     ![TreeList Control in Angular](/assets/2018-08-17-p1/treelist-running-in-angular.png)
  
