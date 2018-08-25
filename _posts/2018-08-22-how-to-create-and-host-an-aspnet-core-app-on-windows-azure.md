@@ -1,3 +1,8 @@
+---
+image:
+  path: "/assets/2018-08-22-p1/windowsazure.jpg"
+---
+
 Are you new to Windows Azure and want a detailed guide on how to host your next ASP.NET Core application there? 
 
 Join me in a new series, that I am hosting on my blog, going through building an ASP.NET Core application using the .NET Core Command Line Interface (CLI). Once the application is created, we shall use the Azure Portal to create a new Web App container to host the application files. Finally, by using Git I will show you how to push your application to Windows Azure and have it up and running.
