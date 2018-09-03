@@ -30,11 +30,11 @@ To host any Web app on the Azure Portal, start by creating a new resource of typ
 
 1. Locate and click on **Create a resource** link at the top-left side of your screen.
 
-   ![Create a Resource](./../assets/2018-09-03-p1/create-a-resource.png)
+   ![Create a Resource](/assets/2018-09-03-p1/create-a-resource.png)
 
 2. The portal navigates you to the **Azure Marketplace** blade. You can then search for any resource type you are interested in creating. In this case, type **Web App** and hit *Enter* to start the search.
 
-   ![Search Azure Marketplace](./../assets/2018-09-03-p1/search-marketplace.png)
+   ![Search Azure Marketplace](/assets/2018-09-03-p1/search-marketplace.png)
 
 3. Click on **Web App** resource type. The Web App documentation blade opens.
 
@@ -44,7 +44,7 @@ To host any Web app on the Azure Portal, start by creating a new resource of typ
 
 6. Select a valid subscription from the dropdown list field.
 
-   ![New Web App](./../assets/2018-09-03-p1/new-web-app.png)
+   ![New Web App](/assets/2018-09-03-p1/new-web-app.png)
 
 ### Add a Resource Group
 
@@ -76,7 +76,7 @@ Going back to the **New Web App** blade:
 
 4. Azure Portal opens the **New App Service Plan** blade as shown below
 
-    ![New App Service Plan](./../assets/2018-09-03-p1/new-app-service-plan.png)
+    ![New App Service Plan](/assets/2018-09-03-p1/new-app-service-plan.png)
     
 5. Select a relevant name for the new App Service plan. Azure will check if it is available to use. In this case, you may type something like *AnAppADayAppServicePlan*.
 
@@ -107,7 +107,7 @@ Going back to the **New Web App** blade:
 
 11. On the **New App Service Plan** blade, locate and click on the **OK** button.
 
-    ![New Web App Populated](./../assets/2018-09-03-p1/new-web-app-populated.png)
+    ![New Web App Populated](/assets/2018-09-03-p1/new-web-app-populated.png)
 
 12. Now click on the **Create** button to create the new Web App. Azure takes a few seconds to create and prepare the Web App for you.
 
@@ -115,13 +115,13 @@ Going back to the **New Web App** blade:
 
 1. Locate and click on the new Web App. The Portal navigates you to the **Web App** blade. On that blade, you can access all the features and settings related to the Web App.
 
-    ![Web App Section](./../assets/2018-09-03-p1/web-app-section.png)
+    ![Web App Section](/assets/2018-09-03-p1/web-app-section.png)
 
     You may use the Web App section to stop, restart, browse and perform many other operations against the Web app. 
     
 2. Locate and navigate to the App URL highlighted in the figure above. The URL is  [https://anappaday.azurewebsites.net](https://anappaday.azurewebsites.net). Upon visiting this URL, Azure displays a default Web Page signaling the successfully creation of the Web App.
 
-    ![App Up and Running](./../assets/2018-09-03-p1/web-app-running.png)
+    ![App Up and Running](/assets/2018-09-03-p1/web-app-running.png)
     
 ## Create Staging Deployment Slot
 
@@ -151,7 +151,7 @@ For this example, we need to create a staging deployment slot to deploy our ASP.
 
 4. To create a new slot, you need to provide a name for the new deployment slot. In this case, we will call this deployment slot as staging.
 
-    ![New Deployment Slot](./../assets/2018-09-03-p1/new-deployment-slot.png)
+    ![New Deployment Slot](/assets/2018-09-03-p1/new-deployment-slot.png)
 
 5. Locate and click on **OK** button to create the new deployment slot.
 
@@ -159,13 +159,13 @@ For this example, we need to create a staging deployment slot to deploy our ASP.
 
 7. The Azure Portal display a list of all deployment slots created under the Web App.
 
-    ![Web App Deployment Slots](./../assets/2018-09-03-p1/deployment-slots.png)
+    ![Web App Deployment Slots](/assets/2018-09-03-p1/deployment-slots.png)
 
 8. Click on the newly created staging deployment slot.
 
 9. Azure Portal navigates you to the **Staging Web App** blade. You can tell right away that the staging deployment slot is a typical independent Web app characterized by its own URL.
 
-    ![Staging Deployment Slot](./../assets/2018-09-03-p1/staging-deployment-slot.png)
+    ![Staging Deployment Slot](/assets/2018-09-03-p1/staging-deployment-slot.png)
 
 10. Locate and click on the Staging Web App URL. Azure redirects you to the default page that's usually displayed for a newly created Web app.
 
@@ -178,7 +178,7 @@ To deploy your Web app to the staging deployment slot you need to set the deploy
 1. Locate and click on the **Deployment credentials** menu item on the left side menu. 
 1. Enter a value for both the *username* and *password* fields to setup the deployment credentials as shown below.
 
-    ![Deployment Credentials](./../assets/2018-09-03-p1/deployment-credentials.png)
+    ![Deployment Credentials](/assets/2018-09-03-p1/deployment-credentials.png)
 
 ### Set Deployment Source
 
@@ -186,7 +186,7 @@ The final step in configuring the staging deployment slot is to set up a deploym
 
 For us we will focus on the Local Git Repository. This is a Git repository fully managed by Azure.
 
-![Deployment Option](./../assets/2018-09-03-p1/deployment-option.png)
+![Deployment Option](/assets/2018-09-03-p1/deployment-option.png)
 
 You may read more about Azure deployment sources here: [Configure deployment sources](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-app-service-configure-deployment-sources)
 
@@ -198,7 +198,7 @@ To configure a deployment source:
 
 1. On the *Deployment option** blade, click the **Choose Source / Configure required settings** field.
 
-    ![Deployment Sources](./../assets/2018-09-03-p1/deployment-sources.png)
+    ![Deployment Sources](/assets/2018-09-03-p1/deployment-sources.png)
 
 2. Locate and select the **Local Git Repository** option.
 
@@ -206,7 +206,7 @@ To configure a deployment source:
 
 The staging deployment slot is now fully configured:
 
-![Staging Deployment Slot Configured](./../assets/2018-09-03-p1/staging-slot-configured.png)
+![Staging Deployment Slot Configured](/assets/2018-09-03-p1/staging-slot-configured.png)
 
 ## Summary
 
