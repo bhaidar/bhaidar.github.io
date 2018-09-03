@@ -9,7 +9,7 @@ Join me in a new series, that I am hosting on my blog, going through building an
 
 This series will be split into three parts:
 
-1. Create a Web App on the Windows Azure Portal
+1. [Create a Web App on the Windows Azure Portal](https://www.bilalhaidar.com/2018/09/create-a-web-app-on-the-windows-azure-portal)
 2. Create an ASP.NET Core application on your machine using the .NET Core CLI
 3. Push an ASP.NET Core application to Azure Portal using Git
 
