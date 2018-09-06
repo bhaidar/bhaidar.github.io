@@ -3,213 +3,285 @@ image:
   path: "/assets/2018-08-22-p1/windowsazure.jpg"
 ---
 
-You want to host your ASP.NET Core Web app on Windows Azure and have no idea where to start?
+In [Part I](https://www.bilalhaidar.com/2018/09/create-a-web-app-on-the-windows-azure-portal) of this series on creating and hosting an ASP.NET Core app on Azure, you've learned how to create a Web App container using the Azure Portal. 
 
-This article will provide a thorough guide on how to use the Azure Portal. You'll create your Web app Container, that will ultimately host your actual Web app.
+In this article, I will take through the process of creating an ASP.NET Core app using the .NET Command-line Interface tools. Also, you will learn how to publish your Web app to Azure using Git.
 
 ## Prerequisites
-Assuming you are familiar with Azure App Service, also known as Web Apps we can proceed. If not, I recommend the official documentation for Azure App Service, on the Microsoft Docs website. Get yourself acquainted with all you need to know and discover what Azure App Service can provide you as a developer.
+Assuming you are familiar with ASP.NET Core and Git we can proceed. If not, I recommend the official documentation for both ASP.NET Core and Git. 
 
-To access the Microsoft official documentation on Azure App Service, follow this link: [Azure App Service](https://docs.microsoft.com/en-us/azure/app-service/)
+To access the Microsoft official documentation on ASP.NET Core, follow this link: [Introduction to ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/).
 
-In addition, you need to have a valid Azure subscription. 
+To access the Git official documentation, follow this link: [Git](https://git-scm.com/doc).
 
-## Azure Portal
+In addition, you need to have a valid Azure subscription.
 
-Microsoft provides the Azure Portal that plays the role of a Web Interface for all of the features that Azure contains. For this article and the coming ones in this series, I am going to use the **preview** version of the Azure Portal. Microsoft announced the preview version back in February 2017 here: [New Azure Preview Portal Grants Early Access to Features](https://buildazure.com/2017/02/03/new-azure-preview-portal-grants-early-access-to-features/) 
+## .NET Command-line Interface (CLI) tools
 
-To start with:
+The .NET Command-line Interface tools, also known as .NET Core CLI, is a cross-platform tool that provides commands to create, restore packages, building, running and publishing .NET applications from the command line without the need for a full featured IDE.
 
-1. Go to [Azure Portal][https://preview.portal.azure.com/] 
+The .NET Core CLI is installed as part of the .NET Core SDK.
 
-2. Login with your credentials to access the portal.
- 
-## Create Web App Container
+To start using the .NET CLI you need to install the relevant .NET Core SDK with respect to the environment that you are using to develop your app: Windows, macOS and Linux. Go to [.NET Downloads](https://www.microsoft.com/net/download?initial-os=linux) and grab the .NET Core SDK.
 
-To host any Web app on the Azure Portal, start by creating a new resource of type Web App.
+## Exploring the .NET Core CLI
 
-1. Locate and click on **Create a resource** link at the top-left side of your screen.
+Open a command-prompt and run the following command:
 
-   ![Create a Resource](/assets/2018-09-03-p1/create-a-resource.png)
+`dotnet --help`
 
-2. The portal navigates you to the **Azure Marketplace** blade. You can then search for any resource type you are interested in creating. In this case, type **Web App** and hit *Enter* to start the search.
+With this command, you get a detailed documentation on how to use the .NET Core CLI tool. The output below has been stripped down to show only the SDK commands we are mostly interested in for this article.
 
-   ![Search Azure Marketplace](/assets/2018-09-03-p1/search-marketplace.png)
+````
+...
+Usage: dotnet [sdk-options] [command] [command-options] [arguments]
 
-3. Click on **Web App** resource type. The Web App documentation blade opens.
+...
+Execute a .NET Core SDK command.
+SDK commands:
+  ...
+  new               Create a new .NET project or file.
+  publish           Publish a .NET project for deployment.
+  restore           Restore dependencies specified in a .NET project.
+  run               Build and run a .NET project output.
+  test              Run unit tests using the test runner specified in a .NET project.
+  ...
 
-4. Next, click on the button **Create**. The Portal navigates you to the **New Web App** blade.
 
-5. Give your app a name by filling in the **App Name** field. In this case, I'm going to call this app **AnAppADay**. 
+Run 'dotnet [command] --help' for more information on a command.
+````
 
-6. Select a valid subscription from the dropdown list field.
+The SDK Commands are self-explanatory. In case you need more information on the .NET Core CLI or how to use it, you can always refer to the official documentation here: [.NET Core command-line interface (CLI) tools](https://docs.microsoft.com/en-us/dotnet/core/tools/?tabs=netcore2x)
 
-   ![New Web App](/assets/2018-09-03-p1/new-web-app.png)
+## Create a new MVC app
 
-### Add a Resource Group
+We will start by creating a new ASP.NET Core MVC application. The `dotnet new` command will be used for this purpose.
 
-When you create a new Web App, you need to assign a resource group for that app.
+Open a command prompt and run the following command: `dotnet new --help`. Once again, you can see a detailed documentation on how to use this SDK command.
 
-In this article, I won't delve into a detailed explanation of what resource groups are. However, in summary, a resource group is a logical grouping or categorization of resources making the task of managing and controlling resources easier. To read more about resource groups, you can watch this video: [Getting Started on Azure Resource Groups](https://www.youtube.com/watch?v=favhwFCx2VU)
+````
+Usage: new [options]
 
-Going back to the **New Web App** blade, the Portal automatically selects the **Create new** option under the **Resource Group** field. In addition, the Portal is using the application name you selected as a name for the resource group.
+Options:
+  -h, --help          Displays help for this command.
+  -l, --list          Lists templates containing the specified name. If no name is specified, lists all templates.
+  -n, --name          The name for the output being created. If no name is specified, the name of the current directory is used.
+  -o, --output        Location to place the generated output.
+  -i, --install       Installs a source or a template pack.
+  -u, --uninstall     Uninstalls a source or a template pack.
+  --nuget-source      Specifies a NuGet source to use during install.
+  --type              Filters templates based on available types. Predefined values are "project", "item" or "other".
+  --force             Forces content to be generated even if it would change existing files.
+  -lang, --language   Filters templates based on language and specifies the language of the template to create.
 
-You have the option to either create a new resource group or use an existing one. In our case, we've decided to create a new resource group.
 
-### Web App Operating System
+Templates                                         Short Name         Language          Tags
+----------------------------------------------------------------------------------------------------------------------------
+Console Application                               console            [C#], F#, VB      Common/Console
+Class library                                     classlib           [C#], F#, VB      Common/Library
+Unit Test Project                                 mstest             [C#], F#, VB      Test/MSTest
+NUnit 3 Test Project                              nunit              [C#], F#, VB      Test/NUnit
+NUnit 3 Test Item                                 nunit-test         [C#], F#, VB      Test/NUnit
+xUnit Test Project                                xunit              [C#], F#, VB      Test/xUnit
+Razor Page                                        page               [C#]              Web/ASP.NET
+MVC ViewImports                                   viewimports        [C#]              Web/ASP.NET
+MVC ViewStart                                     viewstart          [C#]              Web/ASP.NET
+ASP.NET Core Empty                                web                [C#], F#          Web/Empty
+ASP.NET Core Web App (Model-View-Controller)      mvc                [C#], F#          Web/MVC
+ASP.NET Core Web App                              razor              [C#]              Web/MVC/Razor Pages
+ASP.NET Core with Angular                         angular            [C#]              Web/MVC/SPA
+ASP.NET Core with React.js                        react              [C#]              Web/MVC/SPA
+ASP.NET Core with React.js and Redux              reactredux         [C#]              Web/MVC/SPA
+Razor Class Library                               razorclasslib      [C#]              Web/Razor/Library/Razor Class Library
+ASP.NET Core Web API                              webapi             [C#], F#          Web/WebAPI
+global.json file                                  globaljson                           Config
+NuGet Config                                      nugetconfig                          Config
+Web Config                                        webconfig                            Config
+Solution File                                     sln                                  Solution
 
-For the OS (Operating System) field, you have the choice of three different types of operating systems. Windows, Linux or Docker. For now, we will choose the Windows OS. You may choose any of the other options depending on the final outcome you desire.
+Examples:
+    dotnet new mvc --auth Individual
+    dotnet new classlib --framework netcoreapp2.1
+````
 
-### Add an App Service Plan
+All the options available to use with the `dotnet new` command are listed at the top. In addition, all available templates that you can create with that command are then listed with explanation for each template. Finally, an example on how to use the command is shown towards the end of the documentation.
 
-Essentially, the Web App stores and serves your application from one or more virtual machines. One of the best features of Azure Web Apps is that you don't have to deal with the underlying virtual machines or even know anything about them. The App Service plan does that automatically. You only need to focus on your Web app, building and testing it properly and finally deploying it to Azure. The rest Azure handles for you!
+For our scenario, we will be creating an ASP.NET Core MVC app. Therefore, you need to run the following command:
 
-An App Service plan is the container for your app. The App Service plan settings will determine the location, features, cost and compute resources associated with your app. To learn more about App Service plan you can follow this link: [Azure App Service plan overview](https://docs.microsoft.com/en-us/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview)
+`dotnet new mvc --name "AnAppADay" `
 
-Going back to the **New Web App** blade:
+The command above outputs the following:
 
-1. Click on the **App Service plan/location** field.
+````
+The template "ASP.NET Core Web App (Model-View-Controller)" was created successfully.
+This template contains technologies from parties other than Microsoft, see https://aka.ms/aspnetcore-template-3pn-210 for details.
 
-2. Azure Portal opens a new blade to list existing App Service plans.
+Processing post-creation actions...
+Running 'dotnet restore' on AnAppADay\AnAppADay.csproj...
+  Restoring packages for D:\my-apps\AnAppADay\AnAppADay.csproj...
+  Generating MSBuild file D:\my-apps\AnAppADay\obj\AnAppADay.csproj.nuget.g.props.
+  Generating MSBuild file D:\my-apps\AnAppADay\obj\AnAppADay.csproj.nuget.g.targets.
+  Restore completed in 4.97 sec for D:\my-apps\AnAppADay\AnAppADay.csproj.
 
-3. Locate and click the **Create new** link 
+Restore succeeded.
+````
 
-4. Azure Portal opens the **New App Service Plan** blade as shown below
+This gives you enough verbose information about the creation process of the app.
 
-    ![New App Service Plan](/assets/2018-09-03-p1/new-app-service-plan.png)
-    
-5. Select a relevant name for the new App Service plan. Azure will check if it is available to use. In this case, you may type something like *AnAppADayAppServicePlan*.
+Now that the application is created locally, let's run it!
 
-6. For the location field, you may select any location of interest. In this case, I will keep the default selection as is (Central US).
+To run the application, navigate to the root folder of the app and run the following command: `dotnet run`.
 
-7. The pricing tier field allows you to select the **virtual machine** resources that are going to host your Web app. If you click this field, you can browse and read all the details about the available pricing tiers on Azure. For instance, the **S1 Standard** pricing tier is characterized by the features below:
+The command above generates the following output:
 
-    - 1x cores
-    - 100 total ACU
-    - 1.75 GB memory
-    - A-Series compute
-    - 44.64 USD/Month (Estimated)
-    - Custom domains/SSL
-    - Auto scale
-    - Staging slots
-    - Daily backups
-    - Traffic manager
+````
+D:\my-apps\AnAppADay>dotnet run
+...
+Hosting environment: Development
+Content root path: D:\my-apps\AnAppADay
+Now listening on: https://localhost:5001
+Now listening on: http://localhost:5000
+...
+````
 
-    To check other pricing tiers, simply click on one of them and read the details provided by Azure Portal.
-    
-    For our scenario, we will be selecting the **S1 Standard** tier.
+Open a browser and navigate to either URL (Https or Http). The default ASP.NET Core MVC template is displayed.
 
-8. To check other pricing tiers, simply click on one of them and read the details provided by Azure Portal.
+![Default Template](./../assets/2018-09-10-p1/default-template.png)
 
-9. We will be selecting the **S1 Standard** tier.
 
-10. Click on the **Apply** button.
 
-11. On the **New App Service Plan** blade, locate and click on the **OK** button.
 
-    ![New Web App Populated](/assets/2018-09-03-p1/new-web-app-populated.png)
 
-12. Now click on the **Create** button to create the new Web App. Azure takes a few seconds to create and prepare the Web App for you.
 
-### Verify and Test the new Web App
 
-1. Locate and click on the new Web App. The Portal navigates you to the **Web App** blade. On that blade, you can access all the features and settings related to the Web App.
 
-    ![Web App Section](/assets/2018-09-03-p1/web-app-section.png)
 
-    You may use the Web App section to stop, restart, browse and perform many other operations against the Web app. 
-    
-2. Locate and navigate to the App URL highlighted in the figure above. The URL is  [https://anappaday.azurewebsites.net](https://anappaday.azurewebsites.net). Upon visiting this URL, Azure displays a default Web Page signaling the successfully creation of the Web App.
 
-    ![App Up and Running](/assets/2018-09-03-p1/web-app-running.png)
-    
-## Create Staging Deployment Slot
 
-Azure automatically creates a **Production Deployment Slot** once it creates a new Web App.
+## Add Git 
 
-Think of a deployment slot as an independent copy of your web application that Azure redirects external traffic to based on the App URL.
+Now that the application is created locally, let's add Git to the mix!
 
-For instance, the production deployment slot receives all HTTP requests to access the Web App via the following URL [https://anappaday.azurewebsites.net](https://anappaday.azurewebsites.net)
+### Initialize a new local repository
 
-Whereas the staging deployment slot receives all HTTP requests to access the Web App via the following URL [https://anappaday-staging.azurewebsites.net](https://anappaday-staging.azurewebsites.net)
+Before you can initialize a local Git repository, you need first to install Git locally. If you need help installing Git locally, you may follow this link: [Install Git](https://www.atlassian.com/git/tutorials/install-git).
 
-With the help of a deployment slot you can deploy your Web App to the staging slot. Your client would be running the app in a live environment, similar to that of a production environment, testing and verifying the features and changes on the Web App.
+Once Git is installed, navigate to the application root folder and run the following commands:
 
-Once the client is satisfied and happy with the app, you can **swap** the staging to production deployment slots. This means:
+````
+git init
+````
 
-- Redirecting all HTTP requests to the Web App, via the following URL [https://anappaday.azurewebsites.net](https://anappaday.azurewebsites.net), to the app files stored at the staging deployment slot.
+The command above initializes a new local Git repository.
 
-- Redirecting all HTTP request to the Web App, via the following URL [https://anappaday-staging.azurewebsites.net](https://anappaday-staging.azurewebsites.net), to the app files stored at the production deployment slot.
+````
+Initialized empty Git repository in D:/my-apps/AnAppADay/.git/
+````
 
-For this example, we need to create a staging deployment slot to deploy our ASP.NET Core App to. Once we are happy with the app hosted on the staging deployment slot we can easily swap the staging deployment slot with the production one.
+### Stage Web App files
 
-1. Locate and navigate to the Web App created above.
+To let Git know about your web app files, you need to add all the files to the **Working Directory** of Git.
 
-2. Locate and click on the **Deployment slots** menu item on the **Web App** blade left side menu.
+````
+git add .
+````
 
-3. Click on the **+ Add Slot** link located at the top-left side of the **deployment slots** blade.
+The command above adds all files in the web app folder to the staging state of Git.
 
-4. To create a new slot, you need to provide a name for the new deployment slot. In this case, we will call this deployment slot as staging.
+### Commit the changes
 
-    ![New Deployment Slot](/assets/2018-09-03-p1/new-deployment-slot.png)
+The next step is to commit your changes (the files that were staged above) to the **Git Commit History** on your local machine. This is an essential step to let Git know what files are needed to be pushed later on to a remote Git repository.
 
-5. Locate and click on **OK** button to create the new deployment slot.
+````
+git commit -m "Initial create".
+````
 
-6. Find and navigate back to the **Deployment slots** menu item on the **Web App** blade left side menu.
+All the Web app files are now committed to Git.
 
-7. The Azure Portal display a list of all deployment slots created under the Web App.
+### Add Remote for the local Git repository
 
-    ![Web App Deployment Slots](/assets/2018-09-03-p1/deployment-slots.png)
+Before you can push your Web app to Azure, you need to add a **Git Remote** for the local Git repository. A Git remote specifies the remote Git repository that we want to sync our files with, whether push or pull.
 
-8. Click on the newly created staging deployment slot.
+To add a Git remote, first you need to locate the Git repository that you have created on Azure Portal in [Part I](https://www.bilalhaidar.com/2018/09/create-a-web-app-on-the-windows-azure-portal) of this series. To do so:
 
-9. Azure Portal navigates you to the **Staging Web App** blade. You can tell right away that the staging deployment slot is a typical independent Web app characterized by its own URL.
+1. Login to Azure Portal
+1. Navigate to the **AnAppADay** Web app blade
+1. Locate and click on the **Deployment slots** on the left-side menu
+1. Locate and click on the **anappaday-staging** deployment slot
+1. Copy the **Git clone url** on the staging blade.
 
-    ![Staging Deployment Slot](/assets/2018-09-03-p1/staging-deployment-slot.png)
+    ![Staging Blade](./../assets/2018-09-10-p1/staging-blade.png)
 
-10. Locate and click on the Staging Web App URL. Azure redirects you to the default page that's usually displayed for a newly created Web app.
+1. Run the following command to add a Git remote:
 
-### Set Deployment Credentials
+    ````
+    git add remote origin https://anappaday-user@anappaday-staging.scm.azurewebsites.net:443/AnAppADay.git
+    ````
 
-To deploy your Web app to the staging deployment slot you need to set the deployment credentials first. 
+    The command above hooks your local Git repository with the remote Git repository on Azure.
 
-1. Navigate to the staging deployment slot blade.
+1. To verify that the remote has been added successfully, run the following command:
 
-1. Locate and click on the **Deployment credentials** menu item on the left side menu. 
-1. Enter a value for both the *username* and *password* fields to setup the deployment credentials as shown below.
+    ````
+    git remote -v
+    ````
 
-    ![Deployment Credentials](/assets/2018-09-03-p1/deployment-credentials.png)
+    The output shall be something like:
 
-### Set Deployment Source
+    ````
+    origin  https://anappaday-user@anappaday-staging.scm.azurewebsites.net:443/AnAppADay.git (fetch)
+    origin  https://anappaday-user@anappaday-staging.scm.azurewebsites.net:443/AnAppADay.git (push)
+    ````
 
-The final step in configuring the staging deployment slot is to set up a deployment source. With a deployment source you choose the source where the Web app files will be retrieved or pushed from. Azure provides several options as illustrated below.
+Sweet! The local Git repository is now properly connected to the Git repository on Azure.
 
-For us we will focus on the Local Git Repository. This is a Git repository fully managed by Azure.
+## Push the App to Azure using Git
 
-![Deployment Option](/assets/2018-09-03-p1/deployment-option.png)
+The next natural step is to push the Web app to Azure. To do so, you need to run the following command:
 
-You may read more about Azure deployment sources here: [Configure deployment sources](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-app-service-configure-deployment-sources)
+````
+git push origin master
+````
 
-To configure a deployment source:
+You will be prompted to enter the password that you have configured in [Part I](https://www.bilalhaidar.com/2018/09/create-a-web-app-on-the-windows-azure-portal) of this series while setting the **Deployment credentials**.
 
-1. Navigate to the staging deployment slot blade.
+Git starts uploading your committed files to Azure remote Git repository configured under **Staging deployment slot**. Remember, we are pushing the Web app to the staging deployment slot, that we have already created in [Part I](https://www.bilalhaidar.com/2018/09/create-a-web-app-on-the-windows-azure-portal).
 
-2. Locate and click on the **Deployment option** menu item on the left side menu. 
+## Verify the App is Running on Azure 
 
-1. On the *Deployment option** blade, click the **Choose Source / Configure required settings** field.
+To verify the app is running on Azure, follow the steps below:
 
-    ![Deployment Sources](/assets/2018-09-03-p1/deployment-sources.png)
+1. Login to Azure Portal
+1. Navigate to the **AnAppADay** Web app blade
+1. Locate and click on the **Deployment slots** on the left-side menu
+1. Locate and click on the **anappaday-staging** deployment slot
+1. Click on the **URL** on the staging blade
 
-2. Locate and select the **Local Git Repository** option.
+    ![Staging App URL](./../assets/staging-app-url.png)
 
-3. On the **Deployment option** blade, locate and click the **OK** button.
+Voila! You have successfully pushed your local Web app to Azure!
 
-The staging deployment slot is now fully configured:
+## Swap Slots
 
-![Staging Deployment Slot Configured](/assets/2018-09-03-p1/staging-slot-configured.png)
+As mentioned previously, we've pushed the Web app to the staging deployment slot. Once tested and you are happy with the results, it is time to swap the staging with the production deployment slot.
+
+To do so, follow the steps below:
+
+1. Login to Azure Portal
+1. Navigate to the **AnAppADay** Web app blade
+1. Locate and click on the **Deployment slots** on the left-side menu
+1. Locate and click on the **Swap** button at the top of the blade.
+
+    ![Swap](./../assets/2018-09-10-p1/swap.png)
+
+    You select **staging** as the source. For the destination, you select **production**. Meaning that you want to swap the content of the staging deployment slot with the content of the production deployment slot.
+
+The end result is that the Web app that we push to the staging deployment slot is now swapped and hosted for production. The default Azure page that was previously placed in the production deployment slot, is now swapped and moved to the staging deployment slot.
+
+To verify that, navigate to: [https://anappaday.azurewebsites.net/](https://anappaday.azurewebsites.net/) to see our Web app. Also, navigate to [https://anappaday-staging.azurewebsites.net/](https://anappaday-staging.azurewebsites.net/) to see the default Azure page (previously hosted under production).
 
 ## Summary
 
-Today, we've created the Web App container and prepared the app for deployment by setting up the staging deployment slot.
+This is the second and last part of the series on creating and building ASP.NET Core apps on Windows Azure. 
 
-In the next article, we'll be creating an ASP.NET Core app using the .NET Core CLI as part of this series on creating and hosting an ASP.NET Core app on Windows Azure.
+Hope you enjoyed the series and gained something out of it!
