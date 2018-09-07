@@ -3,9 +3,9 @@ image:
   path: "/assets/2018-08-22-p1/windowsazure.jpg"
 ---
 
-In [Part I](https://www.bilalhaidar.com/2018/09/create-a-web-app-on-the-windows-azure-portal) of this series on creating and hosting an ASP.NET Core app on Azure, you've learned how to create a Web App container using the Azure Portal. 
+In [Part I](https://www.bilalhaidar.com/2018/09/create-a-web-app-on-the-windows-azure-portal) of this series on creating and hosting an ASP.NET Core app on Azure, you've learnt how to create a Web App container using the Azure Portal. 
 
-In this article, I will take through the process of creating an ASP.NET Core app using the .NET Command-line Interface tools. Also, you will learn how to publish your Web app to Azure using Git.
+This article, will take you through the process of creating an ASP.NET Core app using the .NET Command-line Interface tools. You will also learn how to publish your Web app to Azure using Git.
 
 ## Prerequisites
 Assuming you are familiar with ASP.NET Core and Git we can proceed. If not, I recommend the official documentation for both ASP.NET Core and Git. 
@@ -22,7 +22,7 @@ The .NET Command-line Interface tools, also known as .NET Core CLI, is a cross-p
 
 The .NET Core CLI is installed as part of the .NET Core SDK.
 
-To start using the .NET CLI you need to install the relevant .NET Core SDK with respect to the environment that you are using to develop your app: Windows, macOS and Linux. Go to [.NET Downloads](https://www.microsoft.com/net/download?initial-os=linux) and grab the .NET Core SDK.
+To start using the .NET CLI you need to install the relevant .NET Core SDK, keeping in mind which medium you will use to develop your app; Windows, macOS and Linux. Go to [.NET Downloads](https://www.microsoft.com/net/download?initial-os=linux) and grab the .NET Core SDK.
 
 ## Exploring the .NET Core CLI
 
@@ -30,7 +30,7 @@ Open a command-prompt and run the following command:
 
 `dotnet --help`
 
-With this command, you get a detailed documentation on how to use the .NET Core CLI tool. The output below has been stripped down to show only the SDK commands we are mostly interested in for this article.
+With this command, you get detailed documentation on how to use the .NET Core CLI tool. The output below has been stripped down to show only the SDK commands that are most relevant for this article.
 
 ````
 ...
@@ -64,7 +64,7 @@ Usage: new [options]
 
 Options:
   -h, --help          Displays help for this command.
-  -l, --list          Lists templates containing the specified name. If no name is specified, lists all templates.
+  -l, --list          Lists templates containing the specified name. If no name is specified, lists all the templates.
   -n, --name          The name for the output being created. If no name is specified, the name of the current directory is used.
   -o, --output        Location to place the generated output.
   -i, --install       Installs a source or a template pack.
@@ -104,7 +104,7 @@ Examples:
     dotnet new classlib --framework netcoreapp2.1
 ````
 
-All the options available to use with the `dotnet new` command are listed at the top. In addition, all available templates that you can create with that command are then listed with explanation for each template. Finally, an example on how to use the command is shown towards the end of the documentation.
+All the options available to use with the `dotnet new` command are listed at the top. In addition, all available templates that you can create with that command are then listed with an explanation for each template. Finally, an example on how to use the command is shown at the end.
 
 For our scenario, we will be creating an ASP.NET Core MVC app. Therefore, you need to run the following command:
 
@@ -148,16 +148,6 @@ Open a browser and navigate to either URL (Https or Http). The default ASP.NET C
 
 ![Default Template](./../assets/2018-09-10-p1/default-template.png)
 
-
-
-
-
-
-
-
-
-
-
 ## Add Git 
 
 Now that the application is created locally, let's add Git to the mix!
@@ -180,7 +170,7 @@ Initialized empty Git repository in D:/my-apps/AnAppADay/.git/
 
 ### Stage Web App files
 
-To let Git know about your web app files, you need to add all the files to the **Working Directory** of Git.
+To inform Git about your web app files, you need to add all the files to the **Working Directory** of Git.
 
 ````
 git add .
@@ -207,7 +197,7 @@ To add a Git remote, first you need to locate the Git repository that you have c
 1. Login to Azure Portal
 1. Navigate to the **AnAppADay** Web app blade
 1. Locate and click on the **Deployment slots** on the left-side menu
-1. Locate and click on the **anappaday-staging** deployment slot
+1. Click the **anappaday-staging** deployment slot
 1. Copy the **Git clone url** on the staging blade.
 
     ![Staging Blade](./../assets/2018-09-10-p1/staging-blade.png)
@@ -237,7 +227,7 @@ Sweet! The local Git repository is now properly connected to the Git repository 
 
 ## Push the App to Azure using Git
 
-The next natural step is to push the Web app to Azure. To do so, you need to run the following command:
+The next step is to push the Web app to Azure. To do so, you need to run the following command:
 
 ````
 git push origin master
@@ -253,9 +243,9 @@ To verify the app is running on Azure, follow the steps below:
 
 1. Login to Azure Portal
 1. Navigate to the **AnAppADay** Web app blade
-1. Locate and click on the **Deployment slots** on the left-side menu
+1. Click the **Deployment slots** on the left-side menu
 1. Locate and click on the **anappaday-staging** deployment slot
-1. Click on the **URL** on the staging blade
+1. Click the **URL** on the staging blade
 
     ![Staging App URL](./../assets/staging-app-url.png)
 
@@ -269,19 +259,18 @@ To do so, follow the steps below:
 
 1. Login to Azure Portal
 1. Navigate to the **AnAppADay** Web app blade
-1. Locate and click on the **Deployment slots** on the left-side menu
-1. Locate and click on the **Swap** button at the top of the blade.
+1. Locate and click the **Deployment slots** on the left-side menu
+1. Click on the **Swap** button at the top of the blade.
 
     ![Swap](./../assets/2018-09-10-p1/swap.png)
 
     You select **staging** as the source. For the destination, you select **production**. Meaning that you want to swap the content of the staging deployment slot with the content of the production deployment slot.
 
-The end result is that the Web app that we push to the staging deployment slot is now swapped and hosted for production. The default Azure page that was previously placed in the production deployment slot, is now swapped and moved to the staging deployment slot.
+This results in the Web app that we push to the staging deployment slot is now swapped and hosted for production. The default Azure page that was previously placed in the production deployment slot, is now swapped and moved to the staging deployment slot.
 
 To verify that, navigate to: [https://anappaday.azurewebsites.net/](https://anappaday.azurewebsites.net/) to see our Web app. Also, navigate to [https://anappaday-staging.azurewebsites.net/](https://anappaday-staging.azurewebsites.net/) to see the default Azure page (previously hosted under production).
 
 ## Summary
+And with that, we complete the process of creating and building ASP.NET Core apps on Windows Azure. 
 
-This is the second and last part of the series on creating and building ASP.NET Core apps on Windows Azure. 
-
-Hope you enjoyed the series and gained something out of it!
+Hope you enjoyed the series and gained something out of it! Please feel free to contact me for further information if need be. 
