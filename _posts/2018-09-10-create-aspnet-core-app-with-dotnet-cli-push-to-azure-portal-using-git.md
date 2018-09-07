@@ -233,7 +233,7 @@ The next step is to push the Web app to Azure. To do so, you need to run the fol
 git push origin master
 ````
 
-You will be prompted to enter the password that you have configured in [Part I](https://www.bilalhaidar.com/2018/09/create-a-web-app-on-the-windows-azure-portal) of this series while setting the **Deployment credentials**.
+You will be prompted to enter the password that you configured in [Part I](https://www.bilalhaidar.com/2018/09/create-a-web-app-on-the-windows-azure-portal) of this series while setting the **Deployment credentials**.
 
 Git starts uploading your committed files to Azure remote Git repository configured under **Staging deployment slot**. Remember, we are pushing the Web app to the staging deployment slot, that we have already created in [Part I](https://www.bilalhaidar.com/2018/09/create-a-web-app-on-the-windows-azure-portal).
 
@@ -266,7 +266,7 @@ To do so, follow the steps below:
 
     You select **staging** as the source. For the destination, you select **production**. Meaning that you want to swap the content of the staging deployment slot with the content of the production deployment slot.
 
-This results in the Web app that we push to the staging deployment slot is now swapped and hosted for production. The default Azure page that was previously placed in the production deployment slot, is now swapped and moved to the staging deployment slot.
+This results in the Web app that we pushed to the staging deployment slot, to be swapped and hosted for production. The default Azure page that was previously placed in the production deployment slot, is now swapped and moved to the staging deployment slot.
 
 To verify that, navigate to: [https://anappaday.azurewebsites.net/](https://anappaday.azurewebsites.net/) to see our Web app. Also, navigate to [https://anappaday-staging.azurewebsites.net/](https://anappaday-staging.azurewebsites.net/) to see the default Azure page (previously hosted under production).
 
