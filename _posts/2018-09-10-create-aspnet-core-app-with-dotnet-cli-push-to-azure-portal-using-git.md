@@ -146,7 +146,7 @@ Now listening on: http://localhost:5000
 
 Open a browser and navigate to either URL (Https or Http). The default ASP.NET Core MVC template is displayed.
 
-![Default Template](./../assets/2018-09-10-p1/default-template.png)
+![Default Template](/assets/2018-09-10-p1/default-template.png)
 
 ## Add Git 
 
@@ -200,7 +200,7 @@ To add a Git remote, first you need to locate the Git repository that you have c
 1. Click the **anappaday-staging** deployment slot
 1. Copy the **Git clone url** on the staging blade.
 
-    ![Staging Blade](./../assets/2018-09-10-p1/staging-blade.png)
+    ![Staging Blade](/assets/2018-09-10-p1/staging-blade.png)
 
 1. Run the following command to add a Git remote:
 
@@ -247,7 +247,7 @@ To verify the app is running on Azure, follow the steps below:
 1. Locate and click on the **anappaday-staging** deployment slot
 1. Click the **URL** on the staging blade
 
-    ![Staging App URL](./../assets/staging-app-url.png)
+    ![Staging App URL](/assets/2018-09-10-p1/staging-app-url.png)
 
 Voila! You have successfully pushed your local Web app to Azure!
 
@@ -262,7 +262,7 @@ To do so, follow the steps below:
 1. Locate and click the **Deployment slots** on the left-side menu
 1. Click on the **Swap** button at the top of the blade.
 
-    ![Swap](./../assets/2018-09-10-p1/swap.png)
+    ![Swap](/assets/2018-09-10-p1/swap.png)
 
     You select **staging** as the source. For the destination, you select **production**. Meaning that you want to swap the content of the staging deployment slot with the content of the production deployment slot.
 
