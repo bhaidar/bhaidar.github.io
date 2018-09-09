@@ -1,6 +1,6 @@
 ---
 image:
-  path: "/assets/2018-08-22-p1/microsoftazure.png"
+  path: "/assets/2018-08-22-p1/microsoft-azure.png"
 ---
 
 You want to host your ASP.NET Core Web app on Microsoft Azure and have no idea where to start?
