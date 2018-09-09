@@ -1,6 +1,6 @@
 ---
 image:
-  path: "/assets/2018-08-22-p1/windowsazure.jpg"
+  path: "/assets/2018-09-10-p1/azure-aspnetcore.png"
 ---
 
 In [Part I](https://www.bilalhaidar.com/2018/09/create-a-web-app-on-the-windows-azure-portal) of this series on creating and hosting an ASP.NET Core app on Azure, you've learnt how to create a Web App container using the Azure Portal. 
