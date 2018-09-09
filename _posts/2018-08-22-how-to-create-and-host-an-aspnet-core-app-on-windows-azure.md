@@ -10,7 +10,7 @@ Join me in a new series, that I am hosting on my blog, going through building an
 This series will be split into two parts:
 
 1. [Create a Web App on the Windows Azure Portal](https://www.bilalhaidar.com/2018/09/create-a-web-app-on-the-windows-azure-portal)
-2. [Create an ASP.NET Core app with .NET Core CLI and push to Azure Portal using Git](https://www.bilalhaidar.com/2018/09/create-aspnet-core-app-with-dotnet-cli-and-push-to-azure-portal-using-git)
+2. [Create an ASP.NET Core app with .NET Core CLI and push to Azure using Git](https://www.bilalhaidar.com/2018/09/create-aspnet-core-app-with-dotnet-cli-and-push-to-azure-using-git)
 
 During the course, you will be introduced to Azure and Cloud concepts. For example, the **Deployment Slots** and their powerful design to give you and your client the opportunity to test the upcoming features of the application live in production without affecting the main application or the running and serving users.
 
