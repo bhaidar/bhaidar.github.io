@@ -3,7 +3,7 @@ image:
   path: "/assets/2018-09-10-p1/azure-aspnetcore.png"
 ---
 
-In [Part I](https://www.bilalhaidar.com/2018/09/create-a-web-app-on-the-windows-azure-portal) of this series on creating and hosting an ASP.NET Core app on Azure, you've learnt how to create a Web App container using the Azure Portal. 
+In [Part I](https://www.bilalhaidar.com/2018/09/create-a-web-app-on-the-microsoft-azure-portal) of this series on creating and hosting an ASP.NET Core app on Azure, you've learnt how to create a Web App container using the Azure Portal. 
 
 This article, will take you through the process of creating an ASP.NET Core app using the .NET Command-line Interface tools. You will also learn how to publish your Web app to Azure using Git.
 
@@ -192,7 +192,7 @@ All the Web app files are now committed to Git.
 
 Before you can push your Web app to Azure, you need to add a **Git Remote** for the local Git repository. A Git remote specifies the remote Git repository that we want to sync our files with, whether push or pull.
 
-To add a Git remote, first you need to locate the Git repository that you have created on Azure Portal in [Part I](https://www.bilalhaidar.com/2018/09/create-a-web-app-on-the-windows-azure-portal) of this series. To do so:
+To add a Git remote, first you need to locate the Git repository that you have created on Azure Portal in [Part I](https://www.bilalhaidar.com/2018/09/create-a-web-app-on-the-microsoft-azure-portal) of this series. To do so:
 
 1. Login to Azure Portal
 1. Navigate to the **AnAppADay** Web app blade
@@ -233,9 +233,9 @@ The next step is to push the Web app to Azure. To do so, you need to run the fol
 git push origin master
 ````
 
-You will be prompted to enter the password that you configured in [Part I](https://www.bilalhaidar.com/2018/09/create-a-web-app-on-the-windows-azure-portal) of this series while setting the **Deployment credentials**.
+You will be prompted to enter the password that you configured in [Part I](https://www.bilalhaidar.com/2018/09/create-a-web-app-on-the-microsoft-azure-portal) of this series while setting the **Deployment credentials**.
 
-Git starts uploading your committed files to Azure remote Git repository configured under **Staging deployment slot**. Remember, we are pushing the Web app to the staging deployment slot, that we have already created in [Part I](https://www.bilalhaidar.com/2018/09/create-a-web-app-on-the-windows-azure-portal).
+Git starts uploading your committed files to Azure remote Git repository configured under **Staging deployment slot**. Remember, we are pushing the Web app to the staging deployment slot, that we have already created in [Part I](https://www.bilalhaidar.com/2018/09/create-a-web-app-on-the-microsoft-azure-portal).
 
 ## Verify the App is Running on Azure 
 
@@ -271,6 +271,6 @@ This results in the Web app that we pushed to the staging deployment slot, to be
 To verify that, navigate to: [https://anappaday.azurewebsites.net/](https://anappaday.azurewebsites.net/) to see our Web app. Also, navigate to [https://anappaday-staging.azurewebsites.net/](https://anappaday-staging.azurewebsites.net/) to see the default Azure page (previously hosted under production).
 
 ## Summary
-And with that, we complete the process of creating and building ASP.NET Core apps on Windows Azure. 
+And with that, we complete the process of creating and building ASP.NET Core apps on Microsoft Azure. 
 
 Hope you enjoyed the series and gained something out of it! Please feel free to contact me for further information if need be. 

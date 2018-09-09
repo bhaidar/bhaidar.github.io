@@ -3,7 +3,7 @@ image:
   path: "/assets/2018-08-22-p1/windowsazure.jpg"
 ---
 
-You want to host your ASP.NET Core Web app on Windows Azure and have no idea where to start?
+You want to host your ASP.NET Core Web app on Microsoft Azure and have no idea where to start?
 
 This article will provide a thorough guide on how to use the Azure Portal. You'll create your Web app Container, that will ultimately host your actual Web app.
 
@@ -212,4 +212,4 @@ The staging deployment slot is now fully configured:
 
 Today, we've created the Web App container and prepared the app for deployment by setting up the staging deployment slot.
 
-In the next article, we'll be creating an ASP.NET Core app using the .NET Core CLI as part of this series on creating and hosting an ASP.NET Core app on Windows Azure.
+In the next article, we'll be creating an ASP.NET Core app using the .NET Core CLI as part of this series on creating and hosting an ASP.NET Core app on Microsoft Azure.
