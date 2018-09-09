@@ -1,6 +1,6 @@
 ---
 image:
-  path: "/assets/2018-08-22-p1/windowsazure.jpg"
+  path: "/assets/2018-08-22-p1/microsoftazure.png"
 ---
 
 Are you new to Microsoft Azure and want a detailed guide on how to host your next ASP.NET Core application there? 
