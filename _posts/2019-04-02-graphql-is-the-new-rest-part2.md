@@ -1,6 +1,6 @@
 ---
 image:
-  path: "/assets/2019-04-02-p1/graphql-logo.png"
+  path: "/assets/2019-03-26-p1/graphql-logo.png"
 title: GraphQL is the new REST - Part 2
 ---
 
