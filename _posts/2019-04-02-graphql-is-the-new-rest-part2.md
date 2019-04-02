@@ -8,4 +8,5 @@ In [Part One](https://www.bhaidar.dev/2019/03/graphql-is-the-new-rest-part1), yo
 
 In this instalment, we will continue from where we left off in Part One and move on to building the GraphQL Angular Client app.
 
+
 [See publication](https://medium.com/@thisdotmedia/graphql-is-the-new-rest-part-2-56d6b63fa824)
