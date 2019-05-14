@@ -1,7 +1,7 @@
 ---
 image:
   path: "/assets/2019-04-11-p1/hasura-logo.png"
-  title: Hasura, GraphQL Backend in the Cloud - Part 2
+ title: Hasura, GraphQL Backend in the Cloud - Part 2
 ---
 
 In Part One, you were introduced to the Hasura GraphQL Engine and shown how to deploy and use Hasura on Heroku.
