@@ -1,7 +1,7 @@
 ---
 image:
   path: "/assets/2019-06-22/nestjs.png"
-title: Nest.js Step by Step guide
+title: Nest.js Step by Step - Part 1
 ---
 
 This article is the first of a series of articles on the Nest framework. The ultimate goal of this series is to introduce you to Nest concepts and provide you with hands-on experience in writing Nest server-side apps so that you can start adopting it in your own projects.
