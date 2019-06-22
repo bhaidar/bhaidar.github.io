@@ -1,6 +1,6 @@
 ---
 image:
-  path: "/assets/2019-06-22/68747470733a2f2f6e6573746a732e636f6d2f696d672f6c6f676f5f746578742e737667.svg"
+  path: "/assets/2019-06-22/nestjs.png"
 title: Nest.js Step by Step guide
 ---
 
