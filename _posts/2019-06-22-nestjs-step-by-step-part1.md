@@ -16,6 +16,6 @@ In a nutshell, I’m going to:
 - Allow user registration and log in
 - Build a front-end Angular app to allow users to create and manage their To Do lists
 
-In this first installment, I'll start by generating a new Nest.js app and building the REST API based on an in-memory data storage.
+In this first installment, I’ll start by generating a new Nest.js app and building the REST API based on an in-memory data storage.
 
 [See publication](https://www.codemag.com/Article/1907081/Nest.js-Step-by-Step)
